@@ -1,7 +1,7 @@
 # ==============================================================================
 # TAHAP 1: Build Aset Frontend (Node.js & Vite)
 # ==============================================================================
-FROM node:20-alpine AS frontend-builder
+FROM node:24-alpine AS frontend-builder
 WORKDIR /app
 
 COPY package*.json ./
@@ -16,7 +16,7 @@ RUN npm run build
 # ==============================================================================
 # TAHAP 2: Image Aplikasi Utama (PHP-FPM Alpine)
 # ==============================================================================
-FROM php:8.4-fpm-alpine AS app
+FROM php:8.3.6-fpm-alpine AS app
 
 # Pasang dependensi sistem yang dibutuhkan untuk ekstensi PHP & DomPDF
 RUN apk update && apk add --no-cache \
